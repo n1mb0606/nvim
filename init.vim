@@ -57,7 +57,6 @@ set statusline+=%*
 set encoding=UTF-8
 
 " Syntastic options
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -65,18 +64,15 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_go_checkers = ['go']
 
 " Ultisnippets options
-
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Vim airline options
-
 let g:airline#extensions#tabline#enabled = 1
 
 " Vim fold options
-
 augroup remember_folds
   autocmd!
   autocmd BufWinLeave ?* mkview
@@ -85,17 +81,17 @@ augroup END
 set foldmethod=indent
 
 " NERDTree options
-
 let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
 autocmd FileType nerdtree setlocal relativenumber
 
 " Shortcuts
-
 set splitbelow
 nnoremap <F2> :<c-u>NERDTreeToggle<cr>
-nnoremap <F3> :<c-u>make<bar><cr><cr><cr>
+nnoremap <F3> :<c-u>make<bar><cr>
 nnoremap <F5> :<c-u>10sp term://./%<<cr>
+
+tnoremap <Esc> <c-\><c-n>
 
 let extension = expand('%:e')
 if extension == 'js'
