@@ -38,6 +38,11 @@ Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 " Vim-devicons, NerdFonts required
 Plug 'ryanoasis/vim-devicons'
 
+" Debug Adapter Protocol
+
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+
 call plug#end()
 
 filetype plugin indent on
@@ -83,20 +88,22 @@ set foldmethod=indent
 " NERDTree options
 let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
+let NERDTreeShowBookmarks=1
 autocmd FileType nerdtree setlocal relativenumber
+
+" DAP options
 
 " Shortcuts
 set splitbelow
-nnoremap <F2> :<c-u>NERDTreeToggle<cr>
-nnoremap <F3> :<c-u>make<bar><cr>
-nnoremap <F5> :<c-u>10sp term://./%<<cr>
-
+nnoremap <F2> :NERDTreeToggle<cr>
+nnoremap <F3> :make -C %:p:h<cr><cr>
+nnoremap <F5> :10sp term://%:p:r<cr>
 tnoremap <Esc> <c-\><c-n>
 
 let extension = expand('%:e')
 if extension == 'js'
-	nnoremap <F5> :<c-u>10sp term://node ./%<cr>
+	nnoremap <F5> :<c-u>10sp term://node %:p<cr>
 endif
 if extension == 'py'
-	nnoremap <F5> :<c-u>10sp term://python3 ./%<cr>
+	nnoremap <F5> :<c-u>10sp term://python3 %:p<cr>
 endif
