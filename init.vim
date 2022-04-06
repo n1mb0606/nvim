@@ -97,12 +97,11 @@ autocmd FileType nerdtree setlocal relativenumber
 
 " Shortcuts
 set splitbelow
+let g:terminal_scrollback_buffer_size = 10000
 nnoremap <F2> :NERDTreeToggle<cr>
-nnoremap <F3> :make -C %:p:h<cr><cr>
+nnoremap <F3> :!make -C %:p:h<cr><cr>
 nnoremap <F5> :10sp term://%:p:r<cr>
-
 nnoremap <F7> :call vimspector#Launch()<CR>
-
 nnoremap <F8> :call vimspector#Reset()<CR>
 nnoremap <F9> :call vimspector#Continue()<CR>
 nnoremap <F10> :call vimspector#StepOut()<CR>
@@ -114,10 +113,6 @@ nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
 
 tnoremap <Esc> <c-\><c-n>
 
-let extension = expand('%:e')
-if extension == 'js'
-	nnoremap <F5> :<c-u>10sp term://node %:p<cr>
-endif
-if extension == 'py'
-	nnoremap <F5> :<c-u>10sp term://python3 %:p<cr>
-endif
+au BufWinEnter *.py nnoremap <F5> :<c-u>10sp term://python3 %:p<cr>
+au BufWinEnter *.js nnoremap <F5> :<c-u>10sp term://node %:p<cr>
+au TermOpen * se scrollback=-1
