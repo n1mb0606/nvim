@@ -63,6 +63,7 @@ let g:syntastic_go_checkers = ['go']
 
 " Vim airline options
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " Vim fold options
 augroup remember_folds
@@ -77,8 +78,6 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
 let NERDTreeShowBookmarks=1
 autocmd FileType nerdtree setlocal relativenumber
-
-" Vimspector options
 
 " Shortcuts
 set splitbelow
